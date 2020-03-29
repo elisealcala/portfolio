@@ -1,10 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
+import BlogCard from '../components/blog-card'
+import { PostQueryQuery } from '../../types/gatsby-graphql'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    p {
+      margin: 0;
+    }
+  }
+`
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,8 +31,6 @@ const FirstSide = styled.div`
     margin-left: 100px;
     font-size: 18px;
     font-weight: 500;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
   & .box-text {
     margin-top: 25%;
@@ -31,6 +41,13 @@ const SecondSide = styled.div`
   width: 50%;
   background-color: #f5f5f5;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  & .container {
+    width: 500px;
+  }
 `
 
 const TitleLink = styled.h2<{ selected: boolean }>`
@@ -59,28 +76,32 @@ const TitleLink = styled.h2<{ selected: boolean }>`
   }
 `
 
-const IndexPage = () => {
-  const [selected, setSelected] = React.useState('')
-  const data = useStaticQuery(graphql`
-    query postQuery {
-      allMdx {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              published
-              description
-            }
+const postQuery = graphql`
+  query postQuery {
+    allMdx {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            published
+            date
+            description
           }
         }
       }
     }
-  `)
+  }
+`
+
+const IndexPage = () => {
+  const [selected, setSelected] = React.useState('')
+  const data = useStaticQuery<PostQueryQuery>(postQuery)
 
   return (
     <Wrapper>
       <SEO title="Home" />
+      <GlobalStyles />
       <FirstSide>
         <h1 className="description">
           Hi, my name is Elizabeth Alcalá. I'm a frontend developer.
@@ -100,7 +121,17 @@ const IndexPage = () => {
           </TitleLink>
         </div>
       </FirstSide>
-      <SecondSide></SecondSide>
+      <SecondSide>
+        <div className="container">
+          {selected === 'blog' ? (
+            data.allMdx.edges.map((mdx) => (
+              <BlogCard key={mdx.node.id} {...mdx.node} />
+            ))
+          ) : (
+            <span>projects</span>
+          )}
+        </div>
+      </SecondSide>
     </Wrapper>
   )
 }
