@@ -1,8 +1,7 @@
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import BlogCard from '../components/blog-card'
-import { PostQueryQuery } from '../../types/gatsby-graphql'
 
 import SEO from '../components/seo'
 
@@ -76,12 +75,15 @@ const TitleLink = styled.h2<{ selected: boolean }>`
   }
 `
 
-const postQuery = graphql`
+export const postQuery = graphql`
   query postQuery {
     allMdx {
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             published
@@ -94,9 +96,8 @@ const postQuery = graphql`
   }
 `
 
-const IndexPage = () => {
-  const [selected, setSelected] = React.useState('')
-  const data = useStaticQuery<PostQueryQuery>(postQuery)
+export default function IndexPage({ data }) {
+  const [selected, setSelected] = React.useState('blog')
 
   return (
     <Wrapper>
@@ -135,5 +136,3 @@ const IndexPage = () => {
     </Wrapper>
   )
 }
-
-export default IndexPage

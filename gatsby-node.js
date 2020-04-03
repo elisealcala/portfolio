@@ -11,9 +11,8 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               id
-              body
               frontmatter {
-                slug
+                title
               }
               fields {
                 slug
@@ -30,13 +29,19 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog post pages.
-    result.data.allMdx.edges.forEach((edge) => {
+    const posts = result.data.allMdx.edges.map((c) => c.node)
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1]
+      const next = index === 0 ? null : posts[index - 1]
+
       createPage({
         // Path for this page — required
-        path: `${edge.node.frontmatter.slug}`,
+        path: `${post.fields.slug}`,
         component: blogPostTemplate,
         context: {
-          slug: `${edge.node.fields.slug}`,
+          id: `${post.id}`,
+          previous: previous,
+          next: next,
         },
       })
     })
