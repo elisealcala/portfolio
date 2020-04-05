@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Colfax-Light';
+  src: url('../fonts/Colfax/Colfax-Light.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Colfax';
+  src: url('../fonts/Colfax/Colfax-Regular.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Colfax-Bold';
+  src: url('../fonts/Colfax/Colfax-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Colfax-Medium';
+  src: url('../fonts/Colfax/Colfax-Medium.woff') format('woff'); /* Pretty Modern Browsers */
+}
