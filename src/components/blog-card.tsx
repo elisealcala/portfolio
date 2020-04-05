@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 import { BlogPostType } from '../types/blog'
 
 const Card = styled.div`
@@ -22,11 +23,12 @@ const Card = styled.div`
   }
 `
 
-const BlogCard: React.FC<BlogPostType> = ({ id, frontmatter }) => {
-  console.log(frontmatter?.date)
+const BlogCard: React.FC<BlogPostType> = ({ fields, frontmatter }) => {
   return (
     <Card>
-      <h2>{frontmatter?.title}</h2>
+      <Link to={fields.slug}>
+        <h2>{frontmatter?.title}</h2>
+      </Link>
       <p>{frontmatter?.description}</p>
       <p className="date">{new Date(frontmatter?.date || '').toDateString()}</p>
     </Card>
