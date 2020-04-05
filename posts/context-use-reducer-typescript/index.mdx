@@ -5,8 +5,6 @@ description: Context API with action and reducers strongly typed.
 published: true
 ---
 
-### React Context with useReducer and Typescript.
-
 [Just the code?](https://codesandbox.io/s/context-reducer-ts-9ctis).
 
 There are some many options to handle state in react applications. Obviously you can use `setState` for some small logic, but what if you have a complex state to manage?
@@ -26,7 +24,7 @@ cd my-app/
 
 Next, create a new `context.tsx` file inside the `src` directory.
 
-```javascript
+```tsx
 /*context.tsx*/
 
 import React, { createContext } from 'react'
@@ -38,7 +36,7 @@ You can initialize a context api as simple as that, with any value you want, in 
 
 Now let's create an initial state, with an empty list of products and the shopping cart counter to zero. Also, let's add some types for this.
 
-```react
+```tsx
 /*context.tsx*/
 
 import React, { createContext } from 'react';
@@ -103,7 +101,7 @@ As you can see, for creating a product we pass, the id, the name, and the price,
 
 Now let's change the context file to import these reducer functions.
 
-```react
+```tsx
 /*context.tsx*/
 
 import React, { createContext, useReducer } from 'react';
@@ -263,7 +261,7 @@ But for this tutorial, we are using two common properties for our actions `type`
 
 Now, let's import the types we define into the `context` file.
 
-```react
+```tsx
 /*context.tsx*/
 
 import React, { createContext, useReducer, Dispatch } from 'react';
@@ -314,7 +312,7 @@ export { AppProvider, AppContext };
 
 Don't forget to wrap your main component with the `AppProvider`.
 
-```react
+```tsx
 /* App.tsx */
 
 import React from 'react';
@@ -333,7 +331,7 @@ export default App
 
 Create a `Products` component and inside this add the following code.
 
-```react
+```tsx
 /* Products.tsx */
 
 import React, { useContext } from 'react';
