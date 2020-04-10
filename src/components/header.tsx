@@ -29,6 +29,9 @@ const HeaderWrapper = styled.div<{ isDark: boolean }>`
       > a:nth-child(1) {
         margin-right: 20px;
       }
+      & .active {
+        text-decoration: underline;
+      }
     }
   }
   @media (min-width: 768px) {
@@ -99,8 +102,12 @@ const Header = () => {
       </Link>
       <div className="links">
         <div className="links_wrapper">
-          <Link to="/about">About</Link>
-          <Link to="/blog">Blog</Link>
+          <Link to="/about" activeClassName="active">
+            About
+          </Link>
+          <Link to="/blog" activeClassName="active">
+            Blog
+          </Link>
         </div>
         <div className="icon">
           <svg width="23" height="23" onClick={themeToggle}>
