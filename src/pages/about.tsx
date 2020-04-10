@@ -43,7 +43,7 @@ export default function AboutPage() {
           technologies such as <span>React</span>, <span>Typescript</span>,{' '}
           <span>Apollo</span> and many more.
         </p>
-        <p>Feel fre to contact me.</p>
+        <p>Feel free to contact me.</p>
         <div className="contact">
           <p>
             <a target="_blank" href="https://twitter.com/elisealcala">
