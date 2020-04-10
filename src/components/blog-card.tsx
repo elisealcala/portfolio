@@ -6,7 +6,7 @@ import { BlogPostType } from '../types/blog';
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  width: fit-content;
   margin: 16px 0;
   & h2 {
     font-size: 18px;
