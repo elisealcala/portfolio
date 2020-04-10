@@ -4,6 +4,7 @@ export type BlogPostType = {
     title?: string | null
     published?: boolean | null
     description?: string | null
+    slug?: string | null
     date?: Date
   } | null
 }
