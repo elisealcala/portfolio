@@ -53,7 +53,7 @@ const Code = ({ codeString, theme, lang }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          <CopyCode onClick={handleClick}>Copy</CopyCode>
+          {/* <CopyCode onClick={handleClick}>Copy</CopyCode> */}
           <code>
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
