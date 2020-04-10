@@ -22,10 +22,13 @@ const MainWrapper = styled.div`
 
 const BlogWrapper = styled.div`
   width: 100%;
+  h1 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
   h2 {
     margin-top: 4rem;
     margin-bottom: 2rem;
-    font-family: 'Colfax-Medium';
   }
   p {
     font-size: 16px;
@@ -34,6 +37,7 @@ const BlogWrapper = styled.div`
     margin-bottom: 1.75rem;
     a {
       color: var(--link);
+      word-wrap: break-word;
       &:hover {
         opacity: 0.7;
         transition: opacity ease 0.3s;
@@ -48,8 +52,19 @@ const BlogWrapper = styled.div`
       border-radius: 4px;
     }
   }
+  hr {
+    margin: 30px 0;
+    opacity: 0.5;
+  }
+  img {
+    max-width: 100%;
+  }
   @media (min-width: 768px) {
     width: 700px;
+    h1 {
+      margin-bottom: 3rem;
+      font-size: 3rem;
+    }
   }
 `;
 
