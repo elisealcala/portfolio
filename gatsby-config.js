@@ -49,6 +49,29 @@ module.exports = {
         icon: `src/images/favicon-dark.png`, // This path is relative to the root of the site.
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-i18n',
+    //   options: {
+    //     langKeyDefault: 'en',
+    //     useLangKeyLayout: false,
+    //     markdownRemark: {
+    //       postPage: 'src/templates/blog-post.tsx',
+    //       query: `
+    //         {
+    //           allMdx {
+    //             edges {
+    //               node {
+    //                 fields {
+    //                   slug
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       `,
+    //     },
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -31,6 +32,8 @@ const Wrapper = styled.div`
 `;
 
 export default function AboutPage() {
+  const { t, i18n } = useTranslation('page');
+
   return (
     <Layout>
       <SEO title="About" />
@@ -43,6 +46,7 @@ export default function AboutPage() {
           technologies such as <span>React</span>, <span>Typescript</span>,{' '}
           <span>Apollo</span> and many more.
         </p>
+        <h1 className="description">{t('page:heading')}</h1>
         <p>Feel free to contact me.</p>
         <div className="contact">
           <p>

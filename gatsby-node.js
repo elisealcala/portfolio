@@ -1,9 +1,18 @@
-const path = require(`path`)
-const { createFilePath } = require('gatsby-source-filesystem')
+const path = require(`path`);
+const fs = require('fs-extra');
+const { createFilePath } = require('gatsby-source-filesystem');
+
+exports.onPostBuild = () => {
+  console.log('Copying locales');
+  fs.copySync(
+    path.join(__dirname, '/src/locales'),
+    path.join(__dirname, '/public/locales')
+  );
+};
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`)
+  const { createPage } = actions;
+  const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`);
   return graphql(
     `
       query loadPagesQuery($limit: Int!) {
@@ -25,14 +34,14 @@ exports.createPages = ({ graphql, actions }) => {
     { limit: 1000 }
   ).then((result) => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
 
     // Create blog post pages.
-    const posts = result.data.allMdx.edges.map((c) => c.node)
+    const posts = result.data.allMdx.edges.map((c) => c.node);
     posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1]
-      const next = index === 0 ? null : posts[index - 1]
+      const previous = index === posts.length - 1 ? null : posts[index + 1];
+      const next = index === 0 ? null : posts[index - 1];
 
       createPage({
         // Path for this page — required
@@ -43,19 +52,19 @@ exports.createPages = ({ graphql, actions }) => {
           previous: previous,
           next: next,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};
