@@ -2,14 +2,6 @@ const path = require(`path`);
 const fs = require('fs-extra');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.onPostBuild = () => {
-  console.log('Copying locales');
-  fs.copySync(
-    path.join(__dirname, '/src/locales'),
-    path.join(__dirname, '/public/locales')
-  );
-};
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`);
@@ -67,4 +59,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     });
   }
+};
+
+exports.onPreInit = () => {
+  console.log('Copying locales');
+  fs.copySync(
+    path.join(__dirname, '/src/locales'),
+    path.join(__dirname, '/public/locales')
+  );
 };
