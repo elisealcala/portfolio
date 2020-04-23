@@ -5,7 +5,6 @@ import { graphql, Link } from 'gatsby';
 import SEO from '../components/seo';
 import BlogCard from '../components/blog-card';
 import Layout from '../components/layout';
-import '../utils/i18n';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -53,7 +52,7 @@ export const postQuery = graphql`
 `;
 
 export default function IndexPage({ data }) {
-  const { t, i18n } = useTranslation('page');
+  const { t, i18n } = useTranslation();
 
   return (
     <Layout>

@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 `;
 
 export default function AboutPage() {
-  const { t, i18n } = useTranslation('page');
+  const { t, i18n } = useTranslation();
 
   return (
     <Layout>
@@ -46,7 +46,7 @@ export default function AboutPage() {
           technologies such as <span>React</span>, <span>Typescript</span>,{' '}
           <span>Apollo</span> and many more.
         </p>
-        <h1 className="description">{t('page:heading')}</h1>
+        <h1 className="description">{t('heading')}</h1>
         <p>Feel free to contact me.</p>
         <div className="contact">
           <p>
