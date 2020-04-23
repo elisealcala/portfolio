@@ -25,6 +25,7 @@
     "gatsby-transformer-sharp": "^2.3.5",
     "i18next": "^19.4.2",
     "i18next-browser-languagedetector": "^4.1.1",
+    "i18next-http-backend": "^1.0.4",
     "i18next-xhr-backend": "^3.2.2",
     "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.0.2",
