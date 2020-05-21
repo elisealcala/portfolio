@@ -20,10 +20,13 @@ const HeaderWrapper = styled.div<{ isDark: boolean }>`
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
+    a:nth-child(1) {
+      margin-right: 32px;
+    }
     & .links_wrapper {
       display: flex;
       flex-direction: row;
-      margin-top: 16px;
+      margin-top: 32px;
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
