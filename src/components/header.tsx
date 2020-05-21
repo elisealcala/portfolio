@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'gatsby';
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import DarkModeSwitch from './dark-mode-switch';
 
 const HeaderWrapper = styled.div<{ isDark: boolean }>`
   width: 100%;
@@ -11,24 +11,25 @@ const HeaderWrapper = styled.div<{ isDark: boolean }>`
   padding: 16px;
   max-width: 1920px;
   & .logo {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
+    text-transform: uppercase;
     margin: 0;
   }
   & .links {
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
-    & .icon {
-      margin-left: 30px;
+    a:nth-child(1) {
+      margin-right: 32px;
     }
     & .links_wrapper {
       display: flex;
       flex-direction: row;
-      margin-top: 16px;
-      > a:nth-child(1) {
-        margin-right: 20px;
-      }
+      margin-top: 32px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
       & .active {
         text-decoration: underline;
       }
@@ -53,36 +54,12 @@ const HeaderWrapper = styled.div<{ isDark: boolean }>`
   }
 `;
 
-const sunPath =
-  'M23 11.5C23 17.8513 17.8513 23 11.5 23C5.14873 23 0 17.8513 0 11.5C0 5.14873 5.14873 0 11.5 0C17.8513 0 23 5.14873 23 11.5Z';
-const moonPath =
-  'M7.5 11.5C7.5 17.8513 11.5 23 11.5 23C5.14873 23 0 17.8513 0 11.5C0 5.14873 5.14873 0 11.5 0C11.5 0 7.5 5.14873 7.5 11.5Z';
-
-const variants = {
-  dark: {
-    d: moonPath,
-    fill: 'white',
-    rotate: 360,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  white: {
-    d: sunPath,
-    fill: 'black',
-    rotate: 180,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
 const Header = () => {
-  const [theme, setTheme] = useState<string | null>(null);
   let websiteTheme: string;
   if (typeof window !== `undefined`) {
     websiteTheme = window.__theme;
   }
+  const [theme, setTheme] = useState<string>(websiteTheme);
 
   const themeToggle = () => {
     window.__setPreferredTheme(websiteTheme === 'dark' ? 'light' : 'dark');
@@ -98,7 +75,7 @@ const Header = () => {
   return (
     <HeaderWrapper isDark={theme === 'dark'}>
       <Link to="/">
-        <h3 className="logo">elisealcala</h3>
+        <h3 className="logo">Elizabeth Alcalá</h3>
       </Link>
       <div className="links">
         <div className="links_wrapper">
@@ -109,16 +86,7 @@ const Header = () => {
             Blog
           </Link>
         </div>
-        <div className="icon">
-          <svg width="23" height="23" onClick={themeToggle}>
-            <motion.path
-              d={sunPath}
-              fill="black"
-              variants={variants}
-              animate={theme === 'dark' ? 'dark' : 'white'}
-            />
-          </svg>
-        </div>
+        <DarkModeSwitch onClick={themeToggle} isDark={theme === 'dark'} />
       </div>
     </HeaderWrapper>
   );

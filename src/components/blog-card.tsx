@@ -7,7 +7,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: fit-content;
-  margin: 16px 0;
+  margin-bottom: 32px;
   & h2 {
     font-size: 18px;
     margin-bottom: 10px;
