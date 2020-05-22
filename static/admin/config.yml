@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: elisealcala/portfolio
+  branch: netlify-cms
+media_folder: static/assets
+public_folder: /assets
+collections:
+  - name: posts
+    label: Posts
+    folder: posts
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: description, label: Description }
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
