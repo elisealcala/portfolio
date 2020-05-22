@@ -2,8 +2,10 @@ backend:
   name: github
   repo: elisealcala/portfolio
   branch: netlify-cms
+  site_domain: elisealcala.com
 media_folder: static/assets
 public_folder: /assets
+publish_mode: editorial_workflow
 collections:
   - name: posts
     label: Posts
