@@ -3,13 +3,15 @@ backend:
   repo: elisealcala/portfolio
   branch: netlify-cms
   site_domain: elisealcala.com
+
 media_folder: static/assets
 public_folder: /assets
 publish_mode: editorial_workflow
+
 collections:
   - name: posts
     label: Posts
-    folder: posts
+    folder: posts/{{slug}}
     create: true
     fields:
       - { name: path, label: Path }
