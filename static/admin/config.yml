@@ -4,6 +4,8 @@ backend:
   branch: netlify-cms
   site_domain: elisealcala.com
 
+local_backend: true
+
 media_folder: static/assets
 public_folder: /assets
 publish_mode: editorial_workflow
@@ -11,11 +13,11 @@ publish_mode: editorial_workflow
 collections:
   - name: posts
     label: Posts
-    folder: posts/{{slug}}
+    folder: posts
+    path: '{{slug}}/index'
     create: true
     fields:
-      - { name: path, label: Path }
+      - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
