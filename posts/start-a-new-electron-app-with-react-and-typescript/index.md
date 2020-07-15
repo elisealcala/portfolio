@@ -1,7 +1,7 @@
 ---
 title: Start a new Electron app with React and Typescript.
 description: Build your first desktop app today
-date: 2020-07-15T02:19:45.947Z
+date: 2020-04-17T02:19:45.947Z
 ---
 ### What is Electron?
 
