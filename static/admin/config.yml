@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: elisealcala/portfolio
-  branch: netlify-cms
+  branch: master
   site_domain: elisealcala.com
 
 local_backend: true
