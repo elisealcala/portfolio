@@ -20,4 +20,5 @@ collections:
       - { name: title, label: Title }
       - { name: description, label: Description }
       - { name: date, label: Date, widget: datetime }
+      - { name: published, label: Published, widget: 'boolean', default: false }
       - { name: body, label: Body, widget: markdown }
