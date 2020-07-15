@@ -1,7 +1,7 @@
 ---
 title: Let's talk about estimation.
 description: A sincere guide to help you finish your tasks on time.
-date: 2020-07-15T02:50:40.959Z
+date: 2020-04-22T02:50:40.959Z
 published: true
 ---
 I struggle a lot with estimations in my two years as a developer. And I'm not the only one, most of my coworkers struggle with this too.
