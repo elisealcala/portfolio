@@ -1,7 +1,7 @@
 ---
 title: How to use Graphql fragments.
 description: DRY your query fields.
-date: 2020-07-17T12:46:19.542Z
+date: 2020-05-01T12:46:19.542Z
 published: true
 ---
 Let’s imagine you developing an app and you need a user to login to access some features.  This app has a page when you show a list of all your users and for that, you need to get the user's data in order to render some UI.
