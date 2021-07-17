@@ -30,6 +30,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog post pages.
     const posts = result.data.allMdx.edges.map((c) => c.node)
+
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1]
       const next = index === 0 ? null : posts[index - 1]

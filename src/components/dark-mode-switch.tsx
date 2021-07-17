@@ -22,12 +22,13 @@ const SwitchWrapper = styled.div<{ isDark: boolean }>`
   }
 `;
 
-const DarkModeSwitch = ({ isDark, onClick }: DarkModeTypes) => {
-  return (
-    <SwitchWrapper onClick={onClick} isDark={isDark}>
-      <div className="switch" />
-    </SwitchWrapper>
-  );
-};
+const DarkModeSwitch =
+  ({ isDark, onClick }: DarkModeTypes) => {
+    return (
+      <SwitchWrapper onClick={onClick} isDark={isDark}>
+        <div className="switch" />
+      </SwitchWrapper>
+    );
+  };
 
 export default DarkModeSwitch;

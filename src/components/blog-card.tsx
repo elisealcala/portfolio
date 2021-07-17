@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { BlogPostType } from '../types/blog';
+import { BlogPostType } from "../types/blog";
 
 const Card = styled.div`
   display: flex;
