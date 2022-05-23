@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
+import { Mdx, SitePageContext } from '../../types/gatsby-graphql';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -68,27 +69,37 @@ const BlogWrapper = styled.div`
   }
 `;
 
-export default function PageTemplate({ data: { mdx }, pageContext }) {
+type BlogPostType = {
+  data: {
+    mdx: Mdx;
+  };
+  pageContext: NonNullable<SitePageContext>;
+};
+
+export default function PageTemplate({
+  data: { mdx },
+  pageContext,
+}: BlogPostType) {
   const { previous, next } = pageContext;
 
   return (
     <Layout>
       <MainWrapper>
         <BlogWrapper>
-          <h1>{mdx.frontmatter.title}</h1>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          <h1>{mdx?.frontmatter?.title}</h1>
+          <MDXRenderer>{mdx?.body || ''}</MDXRenderer>
           <div className="links">
             {previous && (
-              <Link to={previous.fields.slug}>
+              <Link to={previous?.fields?.slug || ''}>
                 <p>
-                  Previous: <span>{previous.frontmatter.title}</span>
+                  Previous: <span>{previous?.frontmatter?.title}</span>
                 </p>
               </Link>
             )}
             {next && (
-              <Link to={next.fields.slug}>
+              <Link to={next?.fields?.slug || ''}>
                 <p>
-                  Next: <span>{next.frontmatter.title}</span>
+                  Next: <span>{next?.frontmatter?.title}</span>
                 </p>
               </Link>
             )}
@@ -99,12 +110,15 @@ export default function PageTemplate({ data: { mdx }, pageContext }) {
   );
 }
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query BlogPost($id: String!) {
     mdx(id: { eq: $id }) {
       id
       body
       frontmatter {
         title
+        tags
+        description
+        date
       }
     }
   }

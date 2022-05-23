@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { BlogPostType } from "../types/blog";
+import { Maybe, MdxFields, MdxFrontmatter } from '../../types/gatsby-graphql';
 
 const Card = styled.div`
   display: flex;
@@ -23,10 +23,15 @@ const Card = styled.div`
   }
 `;
 
-const BlogCard: React.FC<BlogPostType> = ({ fields, frontmatter }) => {
+type BlogCardType = {
+  fields?: Maybe<Pick<MdxFields, 'slug'>>;
+  frontmatter?: MdxFrontmatter;
+};
+
+const BlogCard: React.FC<BlogCardType> = ({ fields, frontmatter }) => {
   return (
     <Card>
-      <Link to={fields.slug}>
+      <Link to={fields?.slug || ''}>
         <h2>{frontmatter?.title}</h2>
       </Link>
       <p>{frontmatter?.description}</p>
