@@ -353,6 +353,7 @@ export type MdxFrontmatter = {
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   published?: Maybe<Scalars['Boolean']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 
@@ -1121,6 +1122,7 @@ export type MdxFrontmatterFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   published?: Maybe<BooleanQueryOperatorInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
 };
 
 export type BooleanQueryOperatorInput = {
@@ -1336,6 +1338,7 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___description'
   | 'childrenMdx___frontmatter___date'
   | 'childrenMdx___frontmatter___published'
+  | 'childrenMdx___frontmatter___tags'
   | 'childrenMdx___slug'
   | 'childrenMdx___body'
   | 'childrenMdx___excerpt'
@@ -1394,6 +1397,7 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___description'
   | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___published'
+  | 'childMdx___frontmatter___tags'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -2752,6 +2756,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___description'
   | 'frontmatter___date'
   | 'frontmatter___published'
+  | 'frontmatter___tags'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -3424,12 +3429,22 @@ export type PostQueryQuery = { allMdx: { edges: Array<{ node: (
         & { fields?: Maybe<Pick<MdxFields, 'slug'>>, frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'published' | 'date' | 'description'>> }
       ) }> } };
 
-export type BlogPostQueryQueryVariables = Exact<{
-  id?: Maybe<Scalars['String']>;
+export type BlogPostQueryVariables = Exact<{
+  id: Scalars['String'];
 }>;
 
 
-export type BlogPostQueryQuery = { mdx?: Maybe<(
+export type BlogPostQuery = { mdx?: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'date'>> }
   )> };
+
+export type LoadPagesQueryQueryVariables = Exact<{
+  limit: Scalars['Int'];
+}>;
+
+
+export type LoadPagesQueryQuery = { allMdx: { edges: Array<{ node: (
+        Pick<Mdx, 'id'>
+        & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'date' | 'published'>>, fields?: Maybe<Pick<MdxFields, 'slug'>> }
+      ) }> } };

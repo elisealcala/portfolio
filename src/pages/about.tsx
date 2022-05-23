@@ -39,7 +39,7 @@ export default function AboutPage() {
           Hi, I'm <span>Elizabeth</span>. I'm from Lima, Perú.
         </p>
         <p>
-          I've been working as a front-end developer for almost two years with
+          I've been working as a front-end developer for almost five years with
           technologies such as <span>React</span>, <span>Typescript</span>,{' '}
           <span>Apollo</span> and many more.
         </p>

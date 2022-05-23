@@ -8,7 +8,7 @@ local_backend: true
 
 media_folder: static/assets
 public_folder: /assets
-# publish_mode: editorial_workflow
+publish_mode: editorial_workflow
 
 collections:
   - name: posts
@@ -21,4 +21,4 @@ collections:
       - { name: description, label: Description, required: true }
       - { name: date, label: Date, widget: datetime, required: true }
       - { name: published, label: Published, widget: 'boolean', default: false }
-      - { name: body, label: Body, widget: markdown }
+      - { name: body, label: Body, widget: markdown, required: true }

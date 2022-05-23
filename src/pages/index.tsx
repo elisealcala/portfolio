@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby';
 import SEO from '../components/seo';
 import BlogCard from '../components/blog-card';
 import Layout from '../components/layout';
+import { LoadPagesQueryQuery } from '../../types/gatsby-graphql';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -50,7 +51,7 @@ export const postQuery = graphql`
   }
 `;
 
-export default function IndexPage({ data }) {
+export default function IndexPage({ data }: { data: LoadPagesQueryQuery }) {
   return (
     <Layout>
       <Wrapper>
